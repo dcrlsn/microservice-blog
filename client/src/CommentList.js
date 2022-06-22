@@ -3,7 +3,23 @@ import React from "react";
 const CommentList = ({ comments }) => {
 
   const renderedComments = comments.map(comment => {
-    return <li key={comment.id}>{comment.content}</li>;
+    let content;
+    switch (comment.status) {
+      case 'approved':
+        content = comment.content;
+        break;
+      case 'rejected':
+        content = 'This comment has been rejected';
+        break;
+      case 'pending':
+        content = 'Awaiting moderation';
+        break;
+
+      default:
+        content = 'Something broke...'
+        break;
+    }
+    return <li key={comment.id}>{content}</li>;
   });
 
   return (
