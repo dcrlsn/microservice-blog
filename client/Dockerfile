@@ -1,14 +1,10 @@
-# Image
-FROM node:alpine
+FROM node:16-alpine
 
-#Set working directory and files
+ENV CI=true
+
 WORKDIR /app
 COPY package.json ./
-RUN npm i
-
-#Copy rest of the files to avoid cache busting
-
+RUN npm install
 COPY ./ ./
 
-#Start command
 CMD ["npm", "start"]

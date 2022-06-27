@@ -7,7 +7,6 @@ COPY package.json ./
 RUN npm i
 
 #Copy rest of the files to avoid cache busting
-
 COPY ./ ./
 
 #Start command
